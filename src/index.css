@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.icon {
+    @apply w-8 h-8 text-primary rounded-full flex items-center justify-center shadow-inner shadow-primary hover:bg-secondary hover:text-white cursor-pointer
+}
+
+.input-btn {
+    @apply  focus:ring-0 bg-transparent border-0 text-sm text-green-500 italic ;
+}
+
+.btn {
+   @apply px-5 py-3 tracking-wide bg-primary text-white rounded-md text-center shadow-md text-sm font-bold border border-primary hover:text-primary hover:bg-transparent active:scale-95;
+}
+
+.icon-hero {
+    @apply block text-slate-600 text-center w-[80%] mx-auto py-5 transition-transform ease-in-out hover:-translate-y-1 hover:scale-[1.02] hover:text-slate-100 hover:bg-gradient-to-tl hover:from-primary hover:to-secondary rounded-3xl duration-300 cursor-pointer
+}
