@@ -40,7 +40,7 @@ const router = createBrowserRouter (
 
 function App() {
   return (
-    <div className="App text-slate-800 max-w-[85rem] mx-auto [&_*]:ease-linear [&_*]:duration-200">
+    <div className="App text-slate-800 mx-auto [&_*]:ease-linear [&_*]:duration-200 bg-quartenary">
      <RouterProvider router = {router} />
     </div>
   );

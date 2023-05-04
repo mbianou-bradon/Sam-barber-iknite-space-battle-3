@@ -2,35 +2,39 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroImage1 from "../assets/HeroImage1.jpg";
 import Modal from "./modal";
-import babaer from "../assets/babar.jpeg"
-import haircut from "../assets/haircut.jpeg"
+import babaer from "../assets/babar.jpeg";
+import haircut from "../assets/haircut.jpeg";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const SecondEditionUIHome = () => {
-
   const [name, setName] = React.useState("");
-  const [date, setDate] = React.useState("");
+  const [date, setDate] = React.useState(new Date());
+  const [number, setNumber] = React.useState("");
   const [time, setTime] = React.useState([]);
+  // const [calendarValue, setCalendarValue] = useState();
 
-  const onSubmit = (e)=> {
-    e.preventDefault()
+  const onSubmit = (e) => {
+    e.preventDefault();
 
-    return (
-      alert(`Congratulation ${name}, you just booked an appointment with Barber Sam on ${date}. Ensure you are there on time at ${time} to catch up on your meeting`)
-    )
-  }
-
+    return alert(
+      `Congratulation ${name}, you just booked an appointment with Barber Sam on ${date}. Ensure you are there on time at ${time} to catch up on your meeting`
+    );
+  };
 
   return (
     <div className="px-4 sm:px-10">
       <p className="w-1/2 text-lg mt-10 mx-auto">
-        Welcome to Sam's Barber shop, the one stop shop for all your exquisite and luscious hair styles. Here at Sam's we treat you to a variety of hair products designed to make your hair glow and your appearance brighter. As we like to say, a smart haircut befits a smart person
-        </p>
+        Welcome to Sam's Barber shop, the one stop shop for all your exquisite
+        and luscious hair styles. Here at Sam's we treat you to a variety of
+        hair products designed to make your hair glow and your appearance
+        brighter. As we like to say, a smart haircut befits a smart person
+      </p>
       <div className="h-full sm:h-[60vh] grid grid-cols-1 gap-3 items-center md:grid-cols-2 w-full my-10">
         <div className="w-3/4">
-         <img src={haircut} alt="" className="h-full w-full object-cover"/>
+          <img src={haircut} alt="" className="h-full w-full object-cover" />
         </div>
-        <div className="block mx-auto text-center md:text-left w-full">
-          
+        <div className="block mx-auto text-center md:text-center w-full">
           <h1 className="py-3 text-5xl font-bold text-original leading-[3.5rem]">
             Available Hours
           </h1>
@@ -42,9 +46,8 @@ const SecondEditionUIHome = () => {
             Afternoon: 1:00pm - 5:00pm
           </p>
           <div className="flex justify-center items-center gap-10 my-5">
-            <button
-              className="bg-primary text-white hover:bg-white border border-primary hover:text-primary py-2 px-8 rounded-xl">
-             <a href="/#form"> Make Appointment</a>
+            <button className="bg-primary text-white hover:bg-white border border-primary hover:text-primary py-2 px-8 rounded-xl">
+              <a href="/#form"> Make Appointment</a>
             </button>
             <button className="hover:bg-primary hover:text-white border border-primary text-primary py-2 px-8 rounded-xl">
               View Calendar
@@ -53,7 +56,7 @@ const SecondEditionUIHome = () => {
         </div>
       </div>
 
-      <div className=" md:mt-10">
+      <div className=" md:my-20">
         <div>
           <h2 className="text-3xl font-semibold text-center">
             Book an appointment
@@ -64,11 +67,9 @@ const SecondEditionUIHome = () => {
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 [&>*]:place-self-center px-3 sm:px-0">
-            <div>
-              <img src={babaer} alt="" className="h-full w-full object-cover"/>
-            </div>
+            <div></div>
 
-            <div className="w-4/5 ">
+            <div className="max-w-[85rem]">
               <form
                 id="form"
                 className="[&>input]:border [&>input]:border-primary [&>input]:block [&>input]:h-10 [&>input]:w-full  [&>input]:text-sm [&>input]:text-primary [&>input]:rounded-lg [&>input]:my-2 [&>input]:pl-4 [&>label]:text-sm [&>label]:mt-5 [&>label]:block [&>label]:ml-2"
@@ -78,27 +79,48 @@ const SecondEditionUIHome = () => {
                   type="text"
                   name="name"
                   id="forName"
-                  placeholder="John Doe" onChange={(e)=> setName(e.target.value)}
+                  placeholder="John Doe"
+                  onChange={(e) => setName(e.target.value)}
                 />
 
-                <label htmlFor="email">Date</label>
-                <select name="date" id="date" className="px-4 py-2 bg-transparent border focus:border-2 border-primary rounded-md" onChange={(e)=> setDate(e.target.value)}>
+                <label htmlFor="number">Phone Number</label>
+                <input
+                  type="number"
+                  name="number"
+                  id="forNumber"
+                  placeholder="+237"
+                  onChange={(e) => setNumber(e.target.value)}
+                />
+
+                <div className="m-auto text-center p-10 rounded-md my-2">
+                  <h1 className="py-3 font-bold">Select a date</h1>
+                  <Calendar onChange={setDate} value={date} className="mx-auto p-3 rounded-md bg-quartenary" />
+                  {console.log(date)}
+                </div>
+
+                {/* <label htmlFor="email">Date</label>
+                <select
+                  name="date"
+                  id="date"
+                  className="px-4 py-2 bg-transparent border focus:border-2 border-primary rounded-md"
+                  onChange={(e) => setDate(e.target.value)}
+                >
                   <option value="monday">Monday</option>
                   <option value="tuesday">Tuesday</option>
                   <option value="wednesday">Wednesday</option>
                   <option value="thursday">Thursday</option>
                   <option value="friday">Friday</option>
-                </select>
+                </select> */}
 
                 <div>Time</div>
                 <div className="text-sm grid grid-cols-3 gap-2 [&>*>label>h2]:px-4 [&>*>label>h2]:py-2 [&>*>label>h2]:rounded-md [&>*]:border [&>*]:border-primary [&>*>input]:sr-only">
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="8-9"
                       id="1"
                       value={"8:00AM-9:00AM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="1"
@@ -107,13 +129,13 @@ const SecondEditionUIHome = () => {
                       <h2>8:00AM - 9:00AM</h2>
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="9-10"
                       id="2"
                       value={"9:00AM-10:00AM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="2"
@@ -122,13 +144,13 @@ const SecondEditionUIHome = () => {
                       <h2>9:00AM - 10:00AM</h2>{" "}
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="10-11"
                       id="3"
                       value={"10:00AM-11:00AM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="3"
@@ -137,13 +159,13 @@ const SecondEditionUIHome = () => {
                       <h2>10:00AM - 11:00AM</h2>{" "}
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="11-12"
                       id="4"
                       value={"11:00AM-12:00PM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="4"
@@ -152,13 +174,13 @@ const SecondEditionUIHome = () => {
                       <h2>11:00AM - 12:00PM</h2>{" "}
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="1-2"
                       id="5"
                       value={"1:00PM-2:00PM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="5"
@@ -167,13 +189,13 @@ const SecondEditionUIHome = () => {
                       <h2>1:00PM - 2:00PM</h2>{" "}
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="2-3"
                       id="6"
                       value={"2:00PM-3:00PM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="6"
@@ -182,13 +204,13 @@ const SecondEditionUIHome = () => {
                       <h2>2:00PM - 3:00PM</h2>{" "}
                     </label>
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="3-4"
                       id="7"
                       value={"3:00PM-4:00PM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="7"
@@ -196,15 +218,14 @@ const SecondEditionUIHome = () => {
                     >
                       <h2>3:00PM - 4:00PM</h2>{" "}
                     </label>
-        
                   </div>
-                  <div>
+                  <div className="rounded-md">
                     <input
                       type="checkbox"
                       name="4-5"
                       id="8"
                       value={"4:00PM-5:00PM"}
-                      className="peer"
+                      className="peer rounded-md"
                     />
                     <label
                       htmlFor="8"
@@ -224,7 +245,10 @@ const SecondEditionUIHome = () => {
                   className="block border border-primary rounded-lg resize-none p-4 my-2 text-sm w-full"
                 ></textarea>
 
-                <button className="border border-primary bg-primary py-2 text-white font-semibold rounded-full text-sm my-3 w-full hover:bg-primary hover:scale-105 active:scale-95" onClick={onSubmit}>
+                <button
+                  className="border border-primary bg-primary py-2 px-5 text-white font-semibold rounded-md text-sm my-3 hover:bg-primary hover:scale-105 active:scale-95"
+                  onClick={onSubmit}
+                >
                   Make An Appointment
                 </button>
               </form>
