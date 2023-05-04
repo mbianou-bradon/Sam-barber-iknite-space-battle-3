@@ -34,7 +34,7 @@ const SecondEditionUIHome = () => {
         <div className="w-3/4">
           <img src={haircut} alt="" className="h-full w-full object-cover" />
         </div>
-        <div className="block mx-auto text-center md:text-left w-full">
+        <div className="block mx-auto text-center md:text-center w-full">
           <h1 className="py-3 text-5xl font-bold text-original leading-[3.5rem]">
             Available Hours
           </h1>
@@ -56,7 +56,7 @@ const SecondEditionUIHome = () => {
         </div>
       </div>
 
-      <div className=" md:mt-10">
+      <div className=" md:my-20">
         <div>
           <h2 className="text-3xl font-semibold text-center">
             Book an appointment
@@ -69,7 +69,7 @@ const SecondEditionUIHome = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 [&>*]:place-self-center px-3 sm:px-0">
             <div></div>
 
-            <div className="w-4/5 ">
+            <div className="max-w-[85rem]">
               <form
                 id="form"
                 className="[&>input]:border [&>input]:border-primary [&>input]:block [&>input]:h-10 [&>input]:w-full  [&>input]:text-sm [&>input]:text-primary [&>input]:rounded-lg [&>input]:my-2 [&>input]:pl-4 [&>label]:text-sm [&>label]:mt-5 [&>label]:block [&>label]:ml-2"
